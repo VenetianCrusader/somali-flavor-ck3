@@ -1,0 +1,41 @@
+# Arrival of the aqala
+somali_nomads.0110 = {
+	hidden = yes
+	
+	trigger = {
+		NOT = { has_global_variable = Aqala }
+		has_title = title:c_kalat # just fire for one person
+		current_date > 900.1.1
+	}
+	
+	immediate = { # Ok
+		RICE_pamir_brahui_migration_effect = yes
+		every_player = {
+			limit = {
+				is_ai = no
+				capital_province = {
+					OR = {
+						geographical_region = world_middle_east_persia
+						geographical_region = world_india_rajastan
+					}
+				}
+			}
+			trigger_event = pamir.0111
+		}
+	}
+}
+
+# Arrival of the Brahui notification
+pamir.0111 = {
+	type = character_event
+	title = pamir.0111.t
+	desc = pamir.0111.desc
+	theme = RICE_theme_pamir_valley
+
+	option = { # OK
+		name = pamir.0111.a
+		show_as_tooltip = {
+			RICE_pamir_brahui_migration_effect = yes
+		}
+	}
+}
